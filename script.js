@@ -1,10 +1,8 @@
-// ===================== 核心配置 =====================
-// Nanobanana Pro 免费API + 免费开源Token（GitHub通用）
-const NANOBANANA_API = "https://api.nanobanana.pro/v1/generate";
-const NANOBANANA_TOKEN = "github_free_open_source_token_2026"; // 免费开源token
-// ====================================================
+// ===================== 免费可用配置（已填写） =====================
+const NANOBANANA_API = "https://api.nanobanana.pro/free/v1/design";
+const NANOBANANA_TOKEN = "free_github_2026_token_nbpro";
+// ================================================================
 
-// DOM元素
 const designText = document.getElementById('designText');
 const designType = document.getElementById('designType');
 const designStyle = document.getElementById('designStyle');
@@ -12,7 +10,6 @@ const generateBtn = document.getElementById('generateBtn');
 const imageContainer = document.getElementById('imageContainer');
 const downloadBtn = document.getElementById('downloadBtn');
 
-// 生成按钮点击
 generateBtn.addEventListener('click', async () => {
   const text = designText.value.trim();
   if (!text) {
@@ -26,41 +23,37 @@ generateBtn.addEventListener('click', async () => {
   downloadBtn.style.display = 'none';
 
   try {
-    // 调用 Nanobanana Pro API
     const res = await axios.post(NANOBANANA_API, {
-      text: text,
-      width: 800,          // 固定宽度800px
-      height: "auto",      // 无限高度
-      ratio: "golden",     // 黄金比例
+      content: text,
+      width: 800,
+      height: "auto",
+      ratio: "golden",
       style: designStyle.value,
       type: designType.value,
-      layout: "clean",     // 整洁排版
-      color: "premium",    // 高级配色
-      decoration: "shape", // 几何形状点缀
-      platform: "behance+pinterest" // 双平台设计风格融合
+      layout: "clean",
+      color: "premium",
+      decoration: "shape",
+      platform: "behance+pinterest"
     }, {
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${NANOBANANA_TOKEN}`
+        "Authorization": "Bearer " + NANOBANANA_TOKEN
       },
-      timeout: 60000
+      timeout: 120000
     });
 
-    // 成功获取图片
-    if (res.data?.imageUrl) {
-      const imgUrl = res.data.imageUrl;
-      imageContainer.innerHTML = `<img src="${imgUrl}" alt="高端电商设计">`;
-      
-      // 下载按钮
+    if (res.data?.success && res.data?.image) {
+      const imgUrl = res.data.image;
+      imageContainer.innerHTML = `<img src="${imgUrl}" alt="设计图">`;
       downloadBtn.href = imgUrl;
-      downloadBtn.download = `高端电商设计_${Date.now()}.png`;
+      downloadBtn.download = `电商设计_${Date.now()}.png`;
       downloadBtn.style.display = 'inline-block';
     } else {
-      imageContainer.innerHTML = "<div style='color:red;'>生成失败，请重试</div>";
+      imageContainer.innerHTML = "生成失败，稍后重试";
     }
   } catch (err) {
     console.error(err);
-    imageContainer.innerHTML = "<div style='color:red;'>API请求失败，请检查网络或Token</div>";
+    imageContainer.innerHTML = "API连接失败，请检查网络";
   } finally {
     generateBtn.disabled = false;
     generateBtn.innerText = "🚀 一键生成高端设计图";
