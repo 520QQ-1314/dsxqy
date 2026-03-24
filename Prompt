@@ -1,0 +1,16 @@
+function buildDesignPrompt(copy, style) {
+  const styles = {
+    minimal: "极简高级风，黑白灰，苹果风格",
+    ecommerce: "高对比电商风，红色促销视觉",
+    amazon: "亚马逊A+风格，白底图文排版"
+  };
+
+  return `
+${styles[style]}
+800宽电商长图，
+黄金比例排版，
+高级配色，
+包含几何装饰，
+文案：${copy}
+`;
+}
