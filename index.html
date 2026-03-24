@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>高端电商设计生成器 | Nanobanana Pro</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- 开源CDN保证全球访问 -->
+  <script src="https://cdn.jsdelivr.net/npm/axios@1.6.0/dist/axios.min.js"></script>
+</head>
+<body>
+<div class="container">
+  <!-- 顶部标题 -->
+  <header class="header">
+    <h1>高端电商智能设计生成器</h1>
+    <p>Behance / Pinterest 高级排版 | 800px宽无限长 | 亚马逊主图/A+/详情页</p>
+  </header>
+
+  <!-- 设计生成表单 -->
+  <div class="generate-box">
+    <div class="form-group">
+      <label>输入设计文案（主标题/副标题/卖点 分行输入）</label>
+      <textarea id="designText" rows="6" placeholder="例如：
+2025夏季新款极简连衣裙
+高级感通勤 | 透气亲肤 | 显瘦版型
+限时优惠 买一送一
+品质保证 售后无忧"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label>选择设计类型</label>
+      <select id="designType">
+        <option value="amazon">亚马逊主图</option>
+        <option value="aplus">亚马逊A+页面</option>
+        <option value="detail">电商详情长图</option>
+        <option value="poster">高端海报</option>
+        <option value="main">商品主图</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>设计风格（高级感）</label>
+      <select id="designStyle">
+        <option value="behance">Behance 高端排版</option>
+        <option value="pinterest">Pinterest 简约配色</option>
+        <option value="luxury">奢华品牌风</option>
+        <option value="minimal">极简高级风</option>
+      </select>
+    </div>
+
+    <button id="generateBtn" class="generate-btn">🚀 一键生成高端设计图</button>
+  </div>
+
+  <!-- 预览区域 -->
+  <div class="preview-box">
+    <h3>设计预览（800px 宽 · 无限高度）</h3>
+    <div id="imageContainer" class="image-container"></div>
+    <a id="downloadBtn" class="download-btn" style="display:none;">下载高清图片</a>
+  </div>
+
+  <!-- 底部 -->
+  <footer>
+    <p>基于 Nanobanana Pro API 免费部署 | 开源GitHub | 高端电商设计自动生成</p>
+  </footer>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
