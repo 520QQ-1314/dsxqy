@@ -1,0 +1,11 @@
+async function generateImage(prompt, model) {
+  if (model === "sd") {
+    return callStableDiffusion(prompt);
+  }
+  if (model === "mj") {
+    return callMidjourney(prompt);
+  }
+  if (model === "dalle") {
+    return callDalle(prompt);
+  }
+}
