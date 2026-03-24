@@ -1,0 +1,9 @@
+{
+  "sections": [
+    {"type": "banner"},
+    {"type": "features"},
+    {"type": "comparison"},
+    {"type": "lifestyle"},
+    {"type": "brand"}
+  ]
+}
